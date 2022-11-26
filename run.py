@@ -11,6 +11,22 @@ def input_details():
         print("Example: Neocal etc.....\n")
 
         username = input("Enter your username here:\n")
-        print(f"Your username is {username}")
+        validate_username(username)
+
+
+
+def validate_username(values):
+    """
+    Validate the username being entered. So that it is exactly:
+    1. Is 6 characters long.
+    2. Contains no numbers or special characters.
+    """
+    try:
+        if len(values) > 6:
+            raise ValueError(
+                f'username must be less than or equal to 6 characters long, you provided {len(values)}'
+            )
+    except ValueError as e:
+        print(f'Inavild data: {e}, please try again.')
 
 input_details()
