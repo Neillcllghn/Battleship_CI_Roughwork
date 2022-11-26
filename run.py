@@ -4,16 +4,18 @@ scores = {"computer": 0, "player": 0}
 
 
 def input_details():
-    
+  
+    while True:
         print('Please enter your username.')
         print('username must not contain numbers or/and special characters')
         print('Must be no longer than 6 characters')
         print("Example: Neocal etc.....\n")
 
         username = input("Enter your username here:\n")
-        validate_username(username)
-
-
+        
+        if validate_username(username):
+            print(f'Hello {username}, Welcome to Battleship Madness!')
+            break
 
 def validate_username(values):
     """
@@ -24,9 +26,78 @@ def validate_username(values):
     try:
         if len(values) > 6:
             raise ValueError(
-                f'username must be less than or equal to 6 characters long, you provided {len(values)}'
+                f'Username must be less than or equal to 6 characters long, you provided {len(values)}.'
             )
     except ValueError as e:
         print(f'Inavild data: {e}, please try again.')
+        return False
 
-input_details()
+    return True
+
+
+class battleship_grid:
+    """
+    This will define the board to be used by both the computer and the Player
+    Randomly selecting where the shipd will be located.
+    """
+    def __init__(self, size, num_ships, name, type):
+        self.size = size
+        self.grid = [["." for x in range(size)] for y in range(size)]
+        self.num_ships = num_ships
+        self.name = name
+        self.type = type
+        self.guesses = []
+        self.ships = []
+    
+    def print(self):
+        for row in self.grid:
+            print("".join(row))
+
+    def guess(self, x, y):
+        self.guesses.append((x,y))
+        self.grid[x][y] = "X"
+
+        if (x, y) in self.ships:
+            self.grid[x][y] = "*"
+            return "Hit"
+        else:
+            return "Miss"
+
+    def add_ship(self, x, y, type ='computer')
+
+def ship_location_choices():
+    """
+    Function that will give the computer a random choice and the Player an 
+    option to provide a choice and the result of those choices.
+    Computers choice,
+    Players choice,
+    Result of each choice.
+
+    """
+    pass
+
+
+def validating_player_choice():
+    """
+    A function that will prevent the player from entering wrong input i.e.:
+    Must be a number to signify a row and or column.
+    Tray and Value Error function. 
+    While loop, return True, False
+
+    """
+    pass
+
+
+def end_game():
+    """
+    This will end the when the number of ships that are determined have been hit
+    """
+    pass
+
+
+def new_game ():
+    login_data = input_details()
+
+
+
+new_game ()
