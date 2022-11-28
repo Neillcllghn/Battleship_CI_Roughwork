@@ -40,6 +40,8 @@ def validate_username(values):
 
 
 
+
+
 def ship_location_choices():
     """
     Function that will give the computer a random choice and the Player an 
