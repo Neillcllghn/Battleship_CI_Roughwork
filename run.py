@@ -4,6 +4,9 @@ scores = {"computer": 0, "player": 0}
 
 
 def input_details():
+    """
+    This function allows the user/player to enter a username.
+    """
   
     while True:
         print('Please enter your username.')
@@ -23,47 +26,19 @@ def validate_username(values):
     1. Is 6 characters long.
     2. Contains no numbers or special characters.
     """
-    try:
-        if len(values) > 6:
-            raise ValueError(
-                f'Username must be less than or equal to 6 characters long, you provided {len(values)}.'
-            )
-    except ValueError as e:
-        print(f'Inavild data: {e}, please try again.')
+    if len(values) > 6:
+        print(f"username must be less than or equal to 6 characters long, you provided {len(values)}.")
+        return False
+    elif any(char.isnumeric() for char in values):
+        print(f"the username {values} cannot be used, please don't use numbers.")
+        return False
+    elif any(char.isalnum() for char in values):
+        print(f"the username {values} cannot be used, please don't use non-alphabetic characters.")
         return False
 
     return True
 
 
-class battleship_grid:
-    """
-    This will define the board to be used by both the computer and the Player
-    Randomly selecting where the shipd will be located.
-    """
-    def __init__(self, size, num_ships, name, type):
-        self.size = size
-        self.grid = [["." for x in range(size)] for y in range(size)]
-        self.num_ships = num_ships
-        self.name = name
-        self.type = type
-        self.guesses = []
-        self.ships = []
-    
-    def print(self):
-        for row in self.grid:
-            print("".join(row))
-
-    def guess(self, x, y):
-        self.guesses.append((x,y))
-        self.grid[x][y] = "X"
-
-        if (x, y) in self.ships:
-            self.grid[x][y] = "*"
-            return "Hit"
-        else:
-            return "Miss"
-
-    def add_ship(self, x, y, type ='computer')
 
 def ship_location_choices():
     """
