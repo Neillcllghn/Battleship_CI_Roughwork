@@ -3,7 +3,7 @@ from random import randint
 scores = {"computer": 0, "player": 0}
 HIDDEN_BOARD = [[' ']*10 for x in range(10)]
 GUESS_PATTERN = [[' ']*10 for x in range(10)]
-letters_to_numbers={'A':0,'B':1, 'C':2,'D':3,'E':4,'F':5,'G':6,'H':7, 'I':8, 'J':9,}
+let_to_nums={'A': 0,'B': 1, 'C': 2,'D': 3,'E': 4,'F': 5,'G': 6,'H': 7, 'I': 8, 'J': 9}
 
 
 def input_details():
@@ -41,7 +41,7 @@ def validate_username(values):
 
     return True
 
-def board_print_out(board):
+def print_board(board):
     print('A B C D E F G H I J')
     print('---------------------')
     row_of_numbers = 1
@@ -50,11 +50,11 @@ def board_print_out(board):
         row_of_numbers += 1
 
 def ships_creation(board):
-    for ship in range(7):
+    for ship in range(6):
         ship_row, ship_column = randint(0,9), randint(0,9)
         while board[ship_row][ship_column] == 'X':
             ship_row, ship_column = randint(0,9), randint(0,9)
-        board[ship_row][ship_column] == 'X'
+        board[ship_row][ship_column] = 'X'
         
 
 def ship_location_choices():
@@ -66,30 +66,75 @@ def ship_location_choices():
     Result of each choice.
 
     """
-    pass
+    while True:
+        row = input("Please enter a ship row 1-9:\n")
+        column = input('Please enter a ship column A-J:\n').upper()
+        if validating_player_choice(row, column):
+            return int(row) -1, let_to_nums(column)
+            break
 
 
-def validating_player_choice():
+def validating_player_choice(choices_row, choices_columns):
     """
     A function that will prevent the player from entering wrong input i.e.:
     Must be a number to signify a row and or column.
     Tray and Value Error function. 
     While loop, return True, False
-
+    
     """
-    pass
+
+    try:
+        if choices_row not in '123456789' and choices_columns not in 'ABCDEFGHIJ':
+            raise ValueError(
+                'The row/column should be between and inclusive of 123456789/ABCDEFGHIJ respectively'
+            )
+    except ValueError as e:
+        print(f'Invalid data {e}, please try again')
+        return False
+
+    return True     
 
 
-def end_game():
+def end_game(board):
     """
     This will end the when the number of ships that are determined have been hit
     """
-    pass
+    count = 0
+    for row in board:
+        for column in row:
+            if column == 'X':
+                count += 1
+    return count
+
+
+def game_logistics(board):
+    turns = 10
+    while turns > 0:
+        print_board(HIDDEN_BOARD)
+        row, column = ship_location_choices()
+        if GUESS_PATTERN[row][column] == '-':
+            print('You already guess that')
+        elif HIDDEN_BOARD[row][column] == 'X':
+            print('CONGRADULATIONS, you sunk my Battleship')
+            GUESS_PATTERN[row][column] = 'X'
+            turns -= 1
+        else:
+            print('Sorry you missed!')
+            GUESS_PATTERN[row][column] = '-'
+            turns -= 1
+        if end_game(GUESS_PATTERN):
+            print('SUCCESS, YOU ARE THE WINNER')
+            break
+        print(f'You have {turns} turns remaining')
+        if turns == 0:
+            print('Sorry you lose....Game Over!')
+            break
+
 
 
 def new_game ():
     login_data = input_details()
-
-
+    create_ship = ships_creation(HIDDEN_BOARD)
+    game_start = game_logistics(HIDDEN_BOARD)
 
 new_game ()
