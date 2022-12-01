@@ -1,8 +1,8 @@
 from random import randint
 
 scores = {"computer": 0, "player": 0}
-HIDDEN_BOARD = [[' ']*10 for x in range(10)]
-GUESS_PATTERN = [[' ']*10 for x in range(10)]
+HIDDEN_BOARD = [[' ']*10 for x in range(9)]
+GUESS_PATTERN = [[' ']*10 for x in range(9)]
 let_to_nums={'A': 0,'B': 1, 'C': 2,'D': 3,'E': 4,'F': 5,'G': 6,'H': 7, 'I': 8, 'J': 9}
 
 
@@ -42,8 +42,8 @@ def validate_username(values):
     return True
 
 def print_board(board):
-    print('A B C D E F G H I J')
-    print('---------------------')
+    print('  A B C D E F G H I J')
+    print(' ---------------------')
     row_of_numbers = 1
     for row in board:
         print("%d|%s|" % (row_of_numbers, "|".join(row)))
@@ -51,54 +51,28 @@ def print_board(board):
 
 def ships_creation(board):
     for ship in range(6):
-        ship_row, ship_column = randint(0,9), randint(0,9)
+        ship_row, ship_column = randint(0,8), randint(0,8)
         while board[ship_row][ship_column] == 'X':
-            ship_row, ship_column = randint(0,9), randint(0,9)
+            ship_row, ship_column = randint(0,8), randint(0,8)
         board[ship_row][ship_column] = 'X'
+
         
 
 def ship_location_choices():
-    """
-    Function that will give the computer a random choice and the Player an 
-    option to provide a choice and the result of those choices.
-    Computers choice,
-    Players choice,
-    Result of each choice.
 
-    """
-    while True:
-        row = input("Please enter a ship row 1-9:\n")
+        row = int(input("Please enter a ship row 1-9:\n"))
+        while row not in [1,2,3,4,5,6,7,8,9]:
+            print(f'Invalid row number {row}, please try again')
+            row = int(input("Please enter a ship row 1-9:\n"))
         column = input('Please enter a ship column A-J:\n').upper()
-        if validating_player_choice(row, column):
-            return int(row) -1, let_to_nums(column)
-            break
+        while column not in 'ABCDEFGHIJ':
+            print(f'Invaild column {column} selected, please try again')
+            column = input('Please enter a ship column A-J:\n').upper()
+        return int(row) - 1, let_to_nums[column]
+            
 
-
-def validating_player_choice(choices_row, choices_columns):
-    """
-    A function that will prevent the player from entering wrong input i.e.:
-    Must be a number to signify a row and or column.
-    Tray and Value Error function. 
-    While loop, return True, False
-    
-    """
-
-    try:
-        if choices_row not in '123456789' and choices_columns not in 'ABCDEFGHIJ':
-            raise ValueError(
-                'The row/column should be between and inclusive of 123456789/ABCDEFGHIJ respectively'
-            )
-    except ValueError as e:
-        print(f'Invalid data {e}, please try again')
-        return False
-
-    return True     
-
-
-def end_game(board):
-    """
-    This will end the when the number of ships that are determined have been hit
-    """
+def count_hit_ships(board):
+   
     count = 0
     for row in board:
         for column in row:
@@ -122,7 +96,7 @@ def game_logistics(board):
             print('Sorry you missed!')
             GUESS_PATTERN[row][column] = '-'
             turns -= 1
-        if end_game(GUESS_PATTERN):
+        if count_hit_ships(GUESS_PATTERN) == 6:
             print('SUCCESS, YOU ARE THE WINNER')
             break
         print(f'You have {turns} turns remaining')
@@ -134,7 +108,7 @@ def game_logistics(board):
 
 def new_game ():
     login_data = input_details()
-    create_ship = ships_creation(HIDDEN_BOARD)
-    game_start = game_logistics(HIDDEN_BOARD)
+    ships = ships_creation(HIDDEN_BOARD)
+    game = game_logistics(HIDDEN_BOARD)
 
 new_game ()
