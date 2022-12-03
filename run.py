@@ -1,6 +1,5 @@
 from random import randint
 
-scores = {"computer": 0, "player": 0}
 HIDDEN_BOARD = [[' ']*10 for x in range(9)]
 GUESS_PATTERN = [[' ']*10 for x in range(9)]
 let_to_nums={'A': 0,'B': 1, 'C': 2,'D': 3,'E': 4,'F': 5,'G': 6,'H': 7, 'I': 8, 'J': 9}
@@ -42,6 +41,9 @@ def validate_username(values):
     return True
 
 def print_board(board):
+    """
+    This creates the board.
+    """
     print('  A B C D E F G H I J')
     print(' ---------------------')
     row_of_numbers = 1
@@ -49,8 +51,12 @@ def print_board(board):
         print("%d|%s|" % (row_of_numbers, "|".join(row)))
         row_of_numbers += 1
 
-def ships_creation(board):
-    for ship in range(6):
+def ship_creation(board):
+
+    """
+    This creates the ships and places them on the board randomly.
+    """
+    for ship in range(10):
         ship_row, ship_column = randint(0,8), randint(0,8)
         while board[ship_row][ship_column] == 'X':
             ship_row, ship_column = randint(0,8), randint(0,8)
@@ -59,23 +65,26 @@ def ships_creation(board):
         
 
 def ship_location_choices():
+    """
+    Allows the user to input a row number a column letter to guess where
+    the ships are on the board.
+    """
+    
     row = input("Please enter a ship row 1-9:\n")
-
     while not row.isdigit() or int(row) < 1 or int(row) > 9:
         print(f'You selected invaild {row} row, please try again')
         row = input("Please enter a ship row 1-9:\n")
-  
-
     column = input('Please enter a ship column A-J:\n').upper()
     while column not in 'ABCDEFGHIJ':
         print(f'You selected invaild {column} column, please try again')
         column = input('Please enter a ship column A-J:\n').upper()
-
     return int(row) - 1, let_to_nums[column]
 
 
 def count_hit_ships(board):
-   
+    """
+    This reduces the number of ships if the user guessed correctly.
+    """
     count = 0
     for row in board:
         for column in row:
@@ -85,33 +94,40 @@ def count_hit_ships(board):
 
 
 def game_logistics():
-    turns = 10
+    """
+    The rules of the game:
+    How many turns.
+    """
+    turns = 20
+    ship_creation(HIDDEN_BOARD)
+    print_board(HIDDEN_BOARD)
     while turns > 0:
         print_board(GUESS_PATTERN)
         row, column = ship_location_choices()
         if GUESS_PATTERN[row][column] == '-':
-            print('You already guess that')
+            print('You already guess that. Please try again')
         elif HIDDEN_BOARD[row][column] == 'X':
             print('Great job!, you sunk my Battleship')
             GUESS_PATTERN[row][column] = 'X'
             turns -= 1
         else:
-            print('Sorry you missed!')
+            print('Sorry, you missed!')
             GUESS_PATTERN[row][column] = '-'
             turns -= 1
-        if count_hit_ships(GUESS_PATTERN) == 6:
+        if count_hit_ships(GUESS_PATTERN) == 10:
             print('SUCCESS, YOU ARE THE WINNER')
+            print(f'You scored {count_hit_ships(GUESS_PATTERN)}')
             break
-        print(f'You have {turns} turns remaining')
+        print(f'You have {turns} turn(s) remaining')
         if turns == 0:
-            print('Sorry you lose....Game Over!')
+            print('Game over! You lose.')
+            print(f'You scored {count_hit_ships(GUESS_PATTERN)}')
             break
 
 
 
 def new_game ():
     login_data = input_details()
-    ships = ships_creation(HIDDEN_BOARD)
     game = game_logistics()
 
 new_game ()
