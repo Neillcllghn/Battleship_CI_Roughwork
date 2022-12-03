@@ -85,7 +85,7 @@ def count_hit_ships(board):
 
 
 def game_logistics():
-    turns = 20
+    turns = 10
     while turns > 0:
         print_board(GUESS_PATTERN)
         row, column = ship_location_choices()
