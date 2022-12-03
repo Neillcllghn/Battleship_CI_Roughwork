@@ -29,8 +29,8 @@ def validate_username(values):
     1. Is 6 characters long.
     2. Contains no numbers or special characters.
     """
-    if len(values) > 6:
-        print(f"username must be less than or equal to 6 characters long, you provided {len(values)}.")
+    if len(values) < 3 or len(values) > 6:
+        print(f"username must be more than 3 and less than 6 characters long, you provided {len(values)}.")
         return False
     elif any(char.isnumeric() for char in values):
         print(f"the username {values} cannot be used, please don't use numbers.")
@@ -59,17 +59,20 @@ def ships_creation(board):
         
 
 def ship_location_choices():
+    row = input("Please enter a ship row 1-9:\n")
 
-        row = int(input("Please enter a ship row 1-9:\n"))
-        while row not in [1,2,3,4,5,6,7,8,9]:
-            print(f'Invalid row number {row}, please try again')
-            row = int(input("Please enter a ship row 1-9:\n"))
+    while not row.isdigit() or int(row) < 1 or int(row) > 9:
+        print(f'You selected invaild {row} row, please try again')
+        row = input("Please enter a ship row 1-9:\n")
+  
+
+    column = input('Please enter a ship column A-J:\n').upper()
+    while column not in 'ABCDEFGHIJ':
+        print(f'You selected invaild {column} column, please try again')
         column = input('Please enter a ship column A-J:\n').upper()
-        while column not in 'ABCDEFGHIJ':
-            print(f'Invaild column {column} selected, please try again')
-            column = input('Please enter a ship column A-J:\n').upper()
-        return int(row) - 1, let_to_nums[column]
-            
+
+    return int(row) - 1, let_to_nums[column]
+
 
 def count_hit_ships(board):
    
@@ -81,15 +84,15 @@ def count_hit_ships(board):
     return count
 
 
-def game_logistics(board):
-    turns = 10
+def game_logistics():
+    turns = 20
     while turns > 0:
-        print_board(HIDDEN_BOARD)
+        print_board(GUESS_PATTERN)
         row, column = ship_location_choices()
         if GUESS_PATTERN[row][column] == '-':
             print('You already guess that')
         elif HIDDEN_BOARD[row][column] == 'X':
-            print('CONGRADULATIONS, you sunk my Battleship')
+            print('Great job!, you sunk my Battleship')
             GUESS_PATTERN[row][column] = 'X'
             turns -= 1
         else:
@@ -109,6 +112,6 @@ def game_logistics(board):
 def new_game ():
     login_data = input_details()
     ships = ships_creation(HIDDEN_BOARD)
-    game = game_logistics(HIDDEN_BOARD)
+    game = game_logistics()
 
 new_game ()
