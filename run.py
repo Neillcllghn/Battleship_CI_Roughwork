@@ -132,9 +132,17 @@ def game_logistics():
         if turns == 0:
             print('Game over! You lose.')
             print(f'You scored {count_hit_ships(GUESS_PATTERN)}')
+            reset_game()
             break
 
-
+def reset_game():
+    option = input('Would you like to play again(Y/N):\n').upper()
+    if option == 'Y':
+        turns = no_of_turns()
+        print(f'Game resetting.....You have {turns} turns to sink my battleships')
+        game_logistics()
+    else:
+        print('Goodbye')
 
 def new_game ():
     login_data = input_details()
