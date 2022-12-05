@@ -56,7 +56,7 @@ def ship_creation(board):
     """
     This creates the ships and places them on the board randomly.
     """
-    for ship in range(10):
+    for ship in range(20):
         ship_row, ship_column = randint(0,8), randint(0,8)
         while board[ship_row][ship_column] == 'X':
             ship_row, ship_column = randint(0,8), randint(0,8)
@@ -93,14 +93,24 @@ def count_hit_ships(board):
     return count
 
 
+def no_of_turns():
+    """
+    This is to allow the user to select the number of turns they want.
+    """
+    turns = input('How many turns do you want? Between 1-20 :\n')
+    while not turns.isdigit() or int(turns) < 1 or int(turns) >= 20:
+        print(f'You selected invaild {turns} number of turns, please try again')
+        turns = input('How many turns do you want? Between 1-20 :\n')
+    return int(turns)
+
+
 def game_logistics():
     """
     The rules of the game:
     How many turns.
     """
-    turns = 20
+    turns = no_of_turns()
     ship_creation(HIDDEN_BOARD)
-    print_board(HIDDEN_BOARD)
     while turns > 0:
         print_board(GUESS_PATTERN)
         row, column = ship_location_choices()
@@ -114,7 +124,7 @@ def game_logistics():
             print('Sorry, you missed!')
             GUESS_PATTERN[row][column] = '-'
             turns -= 1
-        if count_hit_ships(GUESS_PATTERN) == 10:
+        if count_hit_ships(GUESS_PATTERN) == 20:
             print('SUCCESS, YOU ARE THE WINNER')
             print(f'You scored {count_hit_ships(GUESS_PATTERN)}')
             break
