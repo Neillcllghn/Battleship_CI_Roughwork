@@ -51,12 +51,25 @@ def print_board(board):
         print("%d|%s|" % (row_of_numbers, "|".join(row)))
         row_of_numbers += 1
 
+
+def no_of_ships():
+    """
+    This is to allow the user to select the number of ships they want.
+    """
+    ships = input('How many ships do you want to sink? Between 1-20 :\n')
+    while not ships.isdigit() or int(ships) < 1 or int(ships) >= 20:
+        print(f'You selected invaild {ships} number of ships, please try again')
+        ships = input('How many ships do you want to sink? Between 1-20 :\n')
+    return int(ships)
+
+
 def ship_creation(board):
 
     """
     This creates the ships and places them on the board randomly.
     """
-    for ship in range(20):
+    ships = no_of_ships()
+    for ship in range(ships):
         ship_row, ship_column = randint(0,8), randint(0,8)
         while board[ship_row][ship_column] == 'X':
             ship_row, ship_column = randint(0,8), randint(0,8)
@@ -106,11 +119,11 @@ def no_of_turns():
 
 def game_logistics():
     """
-    The rules of the game:
-    How many turns.
+    The game function - what is needed to win, how many turns you have 
+    (based on what was selected by the user), and when the game ends
     """
-    turns = no_of_turns()
     ship_creation(HIDDEN_BOARD)
+    turns = no_of_turns()
     while turns > 0:
         print_board(GUESS_PATTERN)
         row, column = ship_location_choices()
