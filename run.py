@@ -115,10 +115,10 @@ def no_of_turns():
     """
     This is to allow the user to select the number of turns they want.
     """
-    turns = input('How many turns do you want? Between 1-10 :\n')
-    while not turns.isdigit() or int(turns) < 1 or int(turns) >= 11:
+    turns = input('How many turns do you want? Between 1-20 :\n')
+    while not turns.isdigit() or int(turns) < 1 or int(turns) >= 21:
         print(f'You selected invaild {turns} number of turns, please try again')
-        turns = input('How many turns do you want? Between 1-10 :\n')
+        turns = input('How many turns do you want? Between 1-20 :\n')
     return int(turns)
 
 def game_logistics():
