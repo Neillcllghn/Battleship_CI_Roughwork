@@ -26,32 +26,34 @@ Ships are denoted as ‘X’ and misses are denoted as ’-‘.
   - Enter in a row choice (1-6 inclusive)
   - Enter in a column choice (A-G inclusive).
 
-•	Input validation and error checking
-o	Player cannot enter coordinates outside the size of the board (i.e. Row number outside of 1-6 and column outside of A-G).
-o	Username cannot contain numbers.
-o	Username cannot contain special characters (!£$%^7@ etc.).
-o	Username most be minimum 3 and maximum 6 characters long.
-o	Player cannot enter the same guess previously made.
+- Input validation and error checking:
+ - Player cannot enter coordinates outside the size of the board (i.e. Row number outside of 1-6 and column outside of A-G).
+ - Username cannot contain numbers.
+ - Username cannot contain special characters (!£$%^7@ etc.).
+ - Username most be minimum 3 and maximum 6 characters long.
+ - Player cannot enter the same guess previously made.
+
+
 # Future Features
-•	Allow for a two-player game (Player v Computer).
-•	Allow for the player the option to reset the game once finished.
+- Allow for a two-player game (Player v Computer).
+- Allow for the player the option to reset the game once finished.
 
 # Testing:
 I have manually tested this project by doing the following:
-•	Passed the code through a Code Institute PEP8 linter and confirm that there are no major problems.
-•	Given invalid inputs: entering special characters and numbers when it should only be letters, out of bounds inputs, same input twice etc.
-•	Tested in my local terminal and the Code Institute Heroku terminal.
+- Passed the code through a Code Institute PEP8 linter and confirm that there are no major problems.
+- Given invalid inputs: entering special characters and numbers when it should only be letters, out of bounds inputs, same input twice etc.
+- Tested in my local terminal and the Code Institute Heroku terminal.
 
 # Bugs
 ## Solved Bugs.
 - When I wrote the code to prevent the player from entering special characters however the username was passed when letters were introduced. Now this has been corrected by stating “elif not values.isalmun()”
 - When the player selects hits enter on the column selection, an error would appear. This was corrected by creating a column_select list of A-G and validating the players choice through this list.
 # Remaining Bugs
-•	No bugs remaining.
+- No bugs remaining.
 
 # Validator Testing:
-•	PEP8:
-  - No major errors were returned from the Code Institute PEP8 linter.
+- PEP8:
+ - No major errors were returned from the Code Institute PEP8 linter.
 
 # Deployment
 This project was deployed using Code Institute’s mock terminal for Heroku.
