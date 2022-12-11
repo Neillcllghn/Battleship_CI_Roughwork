@@ -8,8 +8,8 @@ let_to_nums={'A': 0,'B': 1, 'C': 2,'D': 3,'E': 4,'F': 5,'G': 6}
 def input_details():
     """
     This function allows the user/player to enter a username.
+    Inspired by Love Sandwiches CI project.
     """
-  
     while True:
         print('Please enter your username.')
         print('username must not contain numbers or/and special characters')
@@ -43,6 +43,8 @@ def validate_username(values):
 def print_board(board):
     """
     This creates the board.
+    Credit for code goes to Knowledge Mavens - 
+    How to Code Battleship in Python - Single Player Game.
     """
     print('  A B C D E F G')
     print(' ---------------')
@@ -51,22 +53,24 @@ def print_board(board):
         print("%d|%s|" % (row_of_numbers, "|".join(row)))
         row_of_numbers += 1
 
-
 def no_of_ships():
     """
     This is to allow the user to select the number of ships they want.
+    Inspired by Knowledge Mavens - 
+    How to Code Battleship in Python - Single Player Game.
     """
-    ships = input('How many ships do you want to sink? Between 1-6 :\n')
-    while not ships.isdigit() or int(ships) < 1 or int(ships) >= 6:
+    ships = input('How many ships do you want to sink? Between 1-8 :\n')
+    while not ships.isdigit() or int(ships) < 1 or int(ships) >= 9:
         print(f'You selected invaild {ships} number of ships, please try again')
-        ships = input('How many ships do you want to sink? Between 1-6 :\n')
+        ships = input('How many ships do you want to sink? Between 1-8 :\n')
     return int(ships)
 
 
 def ship_creation(board):
-
     """
     This creates the ships and places them on the board randomly.
+    Inspired by Knowledge Mavens - 
+    How to Code Battleship in Python - Single Player Game.
     """
     global ships
     ships = no_of_ships()
@@ -76,28 +80,29 @@ def ship_creation(board):
             ship_row, ship_column = randint(0,5), randint(0,5)
         board[ship_row][ship_column] = 'X'
 
-        
-
 def ship_location_choices():
     """
-    Allows the user to input a row number a column letter to guess where
+    Allows the user to input a row number and a column letter to guess where
     the ships are on the board.
+    Inspired by Knowledge Mavens - 
+    How to Code Battleship in Python - Single Player Game.
     """
-    
+    column_select = ['A','B','C','D','E','F','G']
     row = input("Please enter a ship row 1-6:\n")
     while not row.isdigit() or int(row) < 1 or int(row) > 6:
-        print(f'Youclear selected invaild {row} row, please try again')
+        print(f'You selected invaild {row} row, please try again')
         row = input("Please enter a ship row 1-6:\n")
     column = input('Please enter a ship column A-G:\n').upper()
-    while column not in 'ABCDEFG':
+    while column not in column_select:
         print(f'You selected invaild {column} column, please try again')
         column = input('Please enter a ship column A-G:\n').upper()
     return int(row) - 1, let_to_nums[column]
 
-
 def count_hit_ships(board):
     """
     This reduces the number of ships if the user guessed correctly.
+    Credit for code goes to Knowledge Mavens - 
+    How to Code Battleship in Python - Single Player Game.
     """
     count = 0
     for row in board:
@@ -106,22 +111,22 @@ def count_hit_ships(board):
                 count += 1
     return count
 
-
 def no_of_turns():
     """
     This is to allow the user to select the number of turns they want.
     """
     turns = input('How many turns do you want? Between 1-10 :\n')
-    while not turns.isdigit() or int(turns) < 1 or int(turns) >= 10:
+    while not turns.isdigit() or int(turns) < 1 or int(turns) >= 11:
         print(f'You selected invaild {turns} number of turns, please try again')
         turns = input('How many turns do you want? Between 1-10 :\n')
     return int(turns)
 
-
 def game_logistics():
     """
     The game function - what is needed to win, how many turns you have 
-    (based on what was selected by the user), and when the game ends
+    (based on what was selected by the user), and when the game ends.
+    Inspired by Knowledge Mavens - 
+    How to Code Battleship in Python - Single Player Game.
     """
     ship_creation(HIDDEN_BOARD)
     turns = no_of_turns()
@@ -148,18 +153,6 @@ def game_logistics():
             print(f'You scored {count_hit_ships(GUESS_PATTERN)}')
             break
 
-
-
-"""
-def reset_game():
-    option = input('Would you like to play again(Y/N):\n').upper()
-    if option == 'Y':
-        turns = no_of_turns()
-        print(f'Game resetting.....You have {turns} turns to sink my battleships')
-        game_logistics()
-    else:
-        print('Goodbye')
-"""
 
 def new_game ():
     login_data = input_details()
