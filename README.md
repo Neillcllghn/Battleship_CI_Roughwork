@@ -27,11 +27,11 @@ Ships are denoted as ‘X’ and misses are denoted as ’-‘.
   - Enter in a column choice (A-G inclusive).
 
 - Input validation and error checking:
- - Player cannot enter coordinates outside the size of the board (i.e. Row number outside of 1-6 and column outside of A-G).
- - Username cannot contain numbers.
- - Username cannot contain special characters (!£$%^7@ etc.).
- - Username most be minimum 3 and maximum 6 characters long.
- - Player cannot enter the same guess previously made.
+  - Player cannot enter coordinates outside the size of the board (i.e. Row number outside of 1-6 and column outside of A-G).
+  - Username cannot contain numbers.
+  - Username cannot contain special characters (!£$%^7@ etc.).
+  - Username most be minimum 3 and maximum 6 characters long.
+  - Player cannot enter the same guess previously made.
 
 
 # Future Features
