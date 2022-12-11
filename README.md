@@ -44,14 +44,14 @@ I have manually tested this project by doing the following:
 
 # Bugs
 ## Solved Bugs.
-•	When I wrote the code to prevent the player from entering special characters however the username was passed when letters were introduced. Now this has been corrected by stating “elif not values.isalmun()”
-•	When the player selects hits enter on the column selection, an error would appear. This was corrected by creating a column_select list of A-G and validating the players choice through this list.
+- When I wrote the code to prevent the player from entering special characters however the username was passed when letters were introduced. Now this has been corrected by stating “elif not values.isalmun()”
+- When the player selects hits enter on the column selection, an error would appear. This was corrected by creating a column_select list of A-G and validating the players choice through this list.
 # Remaining Bugs
 •	No bugs remaining.
 
 # Validator Testing:
 •	PEP8:
-o	No major errors were returned from the Code Institute PEP8 linter.
+  - No major errors were returned from the Code Institute PEP8 linter.
 
 # Deployment
 This project was deployed using Code Institute’s mock terminal for Heroku.
