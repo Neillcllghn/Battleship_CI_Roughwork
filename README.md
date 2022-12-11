@@ -25,6 +25,7 @@ Ships are denoted as ‘X’ and misses are denoted as ’-‘.
   - Player must enter a username.
   - Enter in a row choice (1-6 inclusive)
   - Enter in a column choice (A-G inclusive).
+  - gg
 
 - Input validation and error checking:
  - Player cannot enter coordinates outside the size of the board (i.e. Row number outside of 1-6 and column outside of A-G).
