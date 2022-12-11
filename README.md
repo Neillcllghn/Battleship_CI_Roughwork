@@ -15,16 +15,16 @@ Ships are denoted as ‘X’ and misses are denoted as ’-‘.
 
 # Features
 ## Existing Features
-•	Random board generation:
-o	The ships are randomly placed on the board.
-o	There is a Hidden board (Which the ships are placed on and are hidden from the player) and Guess Pattern board (Which is the board that provides the player with all their guesses (Hits and Misses) once selected by the user and is shown to the player).
+- Random board generation:
+ - The ships are randomly placed on the board.
+ - There is a Hidden board (Which the ships are placed on and are hidden from the player) and Guess Pattern board (Which is the board that provides the player with all their guesses (Hits and Misses) once selected by the user and is shown to the player).
 
-•	Accepts user input:
-o	Player can select the number of ships to be placed on the board (Between 1-10 inclusive).
-o	Player can select the number of turns they wish to have (Between 1-20 inclusive).
-o	Player must enter a username.
-o	Enter in a row choice (1-6 inclusive)
-o	Enter in a column choice (A-G inclusive).
+- Accepts user input:
+  - Player can select the number of ships to be placed on the board (Between 1-10 inclusive).
+  - Player can select the number of turns they wish to have (Between 1-20 inclusive).
+  - Player must enter a username.
+  - Enter in a row choice (1-6 inclusive)
+  - Enter in a column choice (A-G inclusive).
 
 •	Input validation and error checking
 o	Player cannot enter coordinates outside the size of the board (i.e. Row number outside of 1-6 and column outside of A-G).
