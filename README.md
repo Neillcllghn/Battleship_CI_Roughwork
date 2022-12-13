@@ -79,7 +79,7 @@ The steps to deploy are as follows:
 4. Link the Heroku app to the repository.
 5. Click on Deploy.
 
-The live link can be found here:
+The live link can be found here: https://battleship-ci-project3.herokuapp.com/
 
 # Credits:
 1.	The code used for the username input was inspired by the CI Project: [Love Sandwiches]( https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode/tree/master/05-deployment/01-deployment-part-1).
