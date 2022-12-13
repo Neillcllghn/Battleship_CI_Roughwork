@@ -2,6 +2,7 @@
 Battleship Madness is a Python terminal game, which runs in the Code Institute mock terminal on Heroku.
 It is a single player-based game in which the player can select the number of ships they wish to sink and the number of turns the player wants to have. The player has x number of turns (selected by the player) to sink all the ships before the game ends and the player either wins (hits all the ships) or loses.
 
+![image](https://user-images.githubusercontent.com/109948740/207409291-eebf11c2-9b2c-46b2-9b26-ce091b93eaa1.png)
 
 # How to play.
 Battleship Madness is based on the classic pen-and-paper game. You can read more about it on [Wikipedia](https://en.wikipedia.org/wiki/Battleship_(game)).
@@ -40,7 +41,7 @@ Ships are denoted as ‘X’ and misses are denoted as ’-‘.
 
 # Testing:
 I have manually tested this project by doing the following:
-- Passed the code through a Code Institute PEP8 linter and confirm that there are no major problems.
+- Passed the code through a Code Institute PEP8 linter and confirm that there are no errors.
 - Given invalid inputs: entering special characters and numbers when it should only be letters, out of bounds inputs, same input twice etc.
 - Tested in my local terminal and the Code Institute Heroku terminal.
 
@@ -53,7 +54,7 @@ I have manually tested this project by doing the following:
 
 # Validator Testing:
 - PEP8:
- - No major errors were returned from the Code Institute PEP8 linter.
+ - No errors were returned from the Code Institute PEP8 linter.
 
 # Deployment
 This project was deployed using Code Institute’s mock terminal for Heroku.
