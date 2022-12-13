@@ -41,6 +41,13 @@ Ships are denoted as ‘X’ and misses are denoted as ’-‘.
   - Username most be minimum 3 and maximum 6 characters long.
   - Player cannot enter the same guess previously made.
 
+![image](https://user-images.githubusercontent.com/109948740/207423388-3aa1b261-4fda-4d13-86b2-46af81e89219.png)
+
+![image](https://user-images.githubusercontent.com/109948740/207423640-6d39f8a8-d3a9-4de8-8d77-817178e33c8e.png)
+
+![image](https://user-images.githubusercontent.com/109948740/207423791-a32b227a-7afe-4a18-94e4-339bc20658a9.png)
+
+![image](https://user-images.githubusercontent.com/109948740/207424002-7ae58b30-3636-4bc2-b06b-5411f7bf6fae.png)
 
 # Future Features
 - Allow for a two-player game (Player v Computer).
