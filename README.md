@@ -20,12 +20,19 @@ Ships are denoted as ‘X’ and misses are denoted as ’-‘.
  - The ships are randomly placed on the board.
  - There is a Hidden board (Which the ships are placed on and are hidden from the player) and Guess Pattern board (Which is the board that provides the player with all their guesses (Hits and Misses) once selected by the user and is shown to the player).
 
+![image](https://user-images.githubusercontent.com/109948740/207422736-97b52884-5ec5-4269-97b7-9c446faa02a1.png)
+
 - Accepts user input:
   - Player can select the number of ships to be placed on the board (Between 1-10 inclusive).
   - Player can select the number of turns they wish to have (Between 1-20 inclusive).
   - Player must enter a username.
   - Enter in a row choice (1-6 inclusive)
   - Enter in a column choice (A-G inclusive).
+
+![image](https://user-images.githubusercontent.com/109948740/207423026-46eb432f-1621-4a77-bd62-273f6b8870be.png)
+
+![image](https://user-images.githubusercontent.com/109948740/207423095-9de9fec3-616d-4f4b-9789-a0c474c440c6.png)
+
 
 - Input validation and error checking:
   - Player cannot enter coordinates outside the size of the board (i.e. Row number outside of 1-6 and column outside of A-G).
